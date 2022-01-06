@@ -9,7 +9,6 @@ of each pair of species.
 
 ### Background
 
-
 Metabolic modules and their corresponding KOs will be retrieved via the [KEGG API](https://www.kegg.jp/kegg/rest/keggapi.html). 
 Using high quality annotated genomes retrieved from the [JGI-IMG](https://img.jgi.doe.gov/) 
 or / and [Genome Taxonomy Database](https://gtdb.ecogenomic.org/), 
@@ -26,11 +25,11 @@ a **negative** interaction will be derived.
 
 1. run [FlashWeave](https://github.com/meringlab/FlashWeave.jl) using abundance & metadata tables to build co-occurrence network
 2. get the NCBI Taxon id of each taxon present in the edge file
-3. build a database with the KOs for as many NCBI Taxonomy Ids possible 
-4. using ORGANISMS 
+3. (optional) using [`ncbi-taxonomist`](https://ncbi-taxonomist.readthedocs.io/en/latest/index.html) we can get all the lineage
+4. build a database with the KOs for as many NCBI Taxonomy Ids possible  
 5. use KEGG modules to get major metabolic pathways of interest
 6. search for pathway complementarity in each module of interest
-Relative work
+
 
 
 
@@ -50,6 +49,8 @@ Here is an example:
 *Beside the one for `Metabolism`, KEGG has 7 more [term categories](https://www.kegg.jp/brite/ko00001). 
 However, scrapping JGI is hard and takes time. 
 Should we go for more or could we stick on the `Metabolism` terms?* 
+
+
 
 > Question 2
 
