@@ -1,7 +1,7 @@
 # microbetag
 microbetag attempts to be a microbial interactions co-occurrence network annotator
 
-<<<<<<< HEAD
+
 ## Pathway complementarity module 
 
 Aim of this module is to annotate co-occurrence networks coming from microbiome studies,
