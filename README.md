@@ -45,7 +45,7 @@ Here is an example:
 
 Similarly, we have the `Metabolism` KO modules related KO terms, for 23,360 genomes coming from [GTDB](https://gtdb.ecogenomic.org/). 
 This dataset, would be easier to have it for all KEGG modules. 
-
+The GTDB was mentioned in the proposal. 
 
 ### Issues to address
 
