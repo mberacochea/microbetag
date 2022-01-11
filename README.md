@@ -31,8 +31,7 @@ to build a model that predicts the metabolite preferences of pan-reactomes
 from their environment-driven reactions."*
 
 We now define as ***ecoEFM***
-an EFM that includes at least 1 metabolite that is present in 
-both species of a paired-end association.
+an EFM that includes reactions from two or more species when their metabolic models are merged.
 
 
 
