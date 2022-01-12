@@ -24,9 +24,8 @@ RUN apt-get update &&\
     apt-get install -y wget \ 
                        git \
                        unzip \
-                       mlocate \
-                     #   bzip2 
-                     libbz2-dev
+                       mlocate \ 
+                       libbz2-dev
                      
 # Set Python
 RUN add-apt-repository ppa:deadsnakes/ppa &&\
@@ -74,34 +73,41 @@ RUN apt-get install -y liblzma-dev \
                        zlib1g-dev
 
 ## Install R 
+WORKDIR /usr/local/lib/
 RUN wget https://ftp.cc.uoc.gr/mirrors/CRAN/src/base/R-3/R-3.6.0.tar.gz
 RUN tar -xf R-3.6.0.tar.gz
-WORKDIR /home/R-3.6.0
+WORKDIR /usr/local/lib/R-3.6.0
 RUN ./configure &&\
     make &&\
     make install
 
 # Install BugBase dependencies
-RUN Rscript -e 'install.packages("RColorBrewer", repos="https://cran.rstudio.com")' &&\
-    Rscript -e 'install.packages("beeswarm", repos="https://cran.rstudio.com")' &&\
-    Rscript -e 'install.packages("reshape2", repos="https://cran.rstudio.com")' &&\
-    Rscript -e 'install.packages("dplyr", repos="https://cran.rstudio.com")' && \
-    Rscript -e 'install.packages("gridExtra", repos="https://cran.rstudio.com")' && \
-    Rscript -e 'install.packages("RJSONIO", repos="https://cran.rstudio.com")' && \
-    Rscript -e 'install.packages("digest", repos="https://cran.rstudio.com")' && \
-    Rscript -e 'install.packages("optparse", repos="https://cran.rstudio.com")' && \
-    Rscript -e 'install.packages("ggplot2", repos="https://cran.rstudio.com")' && \
-    Rscript -e 'install.packages("Matrix", repos="https://cran.rstudio.com")' && \
-    Rscript -e 'install.packages("labeling", repos="https://cran.rstudio.com")'
+RUN Rscript -e 'install.packages("dplyr", repos="https://cran.rstudio.com")'
+#    Rscript -e 'install.packages("RColorBrewer", repos="https://cran.rstudio.com")' &&\
+#    Rscript -e 'install.packages("beeswarm", repos="https://cran.rstudio.com")' &&\
+#    Rscript -e 'install.packages("reshape2", repos="https://cran.rstudio.com")' &&\
+#    Rscript -e 'install.packages("dplyr", repos="https://cran.rstudio.com")' && \
+#    Rscript -e 'install.packages("gridExtra", repos="https://cran.rstudio.com")' && \
+#    Rscript -e 'install.packages("RJSONIO", repos="https://cran.rstudio.com")' && \
+#    Rscript -e 'install.packages("digest", repos="https://cran.rstudio.com")' && \
+#    Rscript -e 'install.packages("optparse", repos="https://cran.rstudio.com")' && \
+#    Rscript -e 'install.packages("ggplot2", repos="https://cran.rstudio.com")' && \
+#    Rscript -e 'install.packages("Matrix", repos="https://cran.rstudio.com")' && \
+#    Rscript -e 'install.packages("labeling", repos="https://cran.rstudio.com")'
+
 
 # Install BugBase
 WORKDIR /mnt/external_tools
 RUN git clone https://github.com/knights-lab/BugBase.git 
 
-RUN echo "export BUGBASE_PATH=$PATH:/home/external_tools/BugBase" >> /root/.bashrc && \
+RUN echo "export BUGBASE_PATH=$PATH:/mnt/external_tools/BugBase" >> /root/.bashrc && \
     echo "export PATH=$PATH:$BUGBASE_PATH/bin" >> /root/.bashrc
 
+WORKDIR /mnt/external_tools/BugBase/R_lib
+RUN touch .readme.md
 
-RUN 
+WORKDIR /mnt/external_tools/BugBase
 
+COPY bugbase_env.r .
+RUN Rscript bugbase_env.r
 
