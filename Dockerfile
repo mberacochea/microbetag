@@ -92,15 +92,16 @@ RUN Rscript -e 'install.packages("RColorBrewer", repos="https://cran.rstudio.com
     Rscript -e 'install.packages("optparse", repos="https://cran.rstudio.com")' && \
     Rscript -e 'install.packages("ggplot2", repos="https://cran.rstudio.com")' && \
     Rscript -e 'install.packages("Matrix", repos="https://cran.rstudio.com")' && \
-    Rscript -e 'install.packages("labeling", repos="https://cran.rstudio.com")' && \
+    Rscript -e 'install.packages("labeling", repos="https://cran.rstudio.com")'
 
 # Install BugBase
-WORKDIR /home/external_tools
+WORKDIR /mnt/external_tools
 RUN git clone https://github.com/knights-lab/BugBase.git 
 
-RUN echo "export PATH=$PATH:/home/external_tools/BugBase" >> /root/.bashrc && \
+RUN echo "export BUGBASE_PATH=$PATH:/home/external_tools/BugBase" >> /root/.bashrc && \
     echo "export PATH=$PATH:$BUGBASE_PATH/bin" >> /root/.bashrc
 
 
+RUN 
 
 
