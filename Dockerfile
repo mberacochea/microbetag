@@ -82,32 +82,66 @@ RUN ./configure &&\
     make install
 
 # Install BugBase dependencies
-RUN Rscript -e 'install.packages("dplyr", repos="https://cran.rstudio.com")'
-#    Rscript -e 'install.packages("RColorBrewer", repos="https://cran.rstudio.com")' &&\
-#    Rscript -e 'install.packages("beeswarm", repos="https://cran.rstudio.com")' &&\
-#    Rscript -e 'install.packages("reshape2", repos="https://cran.rstudio.com")' &&\
-#    Rscript -e 'install.packages("dplyr", repos="https://cran.rstudio.com")' && \
-#    Rscript -e 'install.packages("gridExtra", repos="https://cran.rstudio.com")' && \
-#    Rscript -e 'install.packages("RJSONIO", repos="https://cran.rstudio.com")' && \
-#    Rscript -e 'install.packages("digest", repos="https://cran.rstudio.com")' && \
-#    Rscript -e 'install.packages("optparse", repos="https://cran.rstudio.com")' && \
-#    Rscript -e 'install.packages("ggplot2", repos="https://cran.rstudio.com")' && \
-#    Rscript -e 'install.packages("Matrix", repos="https://cran.rstudio.com")' && \
-#    Rscript -e 'install.packages("labeling", repos="https://cran.rstudio.com")'
+RUN Rscript -e 'install.packages("dplyr", repos="https://cran.rstudio.com")' &&\
+    Rscript -e 'install.packages("RColorBrewer2", repos="https://cran.rstudio.com")' &&\
+    Rscript -e 'install.packages("beeswarm", repos="https://cran.rstudio.com")' &&\
+    Rscript -e 'install.packages("reshape2", repos="https://cran.rstudio.com")' &&\
+    Rscript -e 'install.packages("plyr", repos="https://cran.rstudio.com")' && \
+    Rscript -e 'install.packages("gridExtra", repos="https://cran.rstudio.com")' && \
+    Rscript -e 'install.packages("RJSONIO", repos="https://cran.rstudio.com")' && \
+    Rscript -e 'install.packages("digest", repos="https://cran.rstudio.com")' && \
+    Rscript -e 'install.packages("optparse", repos="https://cran.rstudio.com")' && \
+    Rscript -e 'install.packages("Matrix", repos="https://cran.rstudio.com")' && \
+    Rscript -e 'install.packages("labeling", repos="https://cran.rstudio.com")'
 
 
 # Install BugBase
-WORKDIR /mnt/external_tools
-RUN git clone https://github.com/knights-lab/BugBase.git 
+WORKDIR /home/external_tools
+RUN git clone https://github.com/knights-lab/BugBase.git
 
-RUN echo "export BUGBASE_PATH=$PATH:/mnt/external_tools/BugBase" >> /root/.bashrc && \
+RUN echo "export BUGBASE_PATH=/home/external_tools/BugBase" >> /root/.bashrc && \
     echo "export PATH=$PATH:$BUGBASE_PATH/bin" >> /root/.bashrc
 
-WORKDIR /mnt/external_tools/BugBase/R_lib
-RUN touch .readme.md
+RUN Rscript -e 'install.packages("ggplot2", repos="https://cran.rstudio.com")'
 
-WORKDIR /mnt/external_tools/BugBase
+WORKDIR /usr/local/lib64/R/library
+RUN ln -s $PWD/dplyr /home/external_tools/BugBase/R_lib &&\ 
+    ln -s $PWD/RColorBrewer /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/beeswarm /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/reshape2 /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/plyr /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/gridExtra /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/RJSONIO /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/digest /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/optparse /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/Matrix /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/labeling /home/external_tools/BugBase/R_lib &&\
+    ln -s $PWD/ggplot2 /home/external_tools/BugBase/R_lib
 
-COPY bugbase_env.r .
-RUN Rscript bugbase_env.r
+# Install FAPRTOTAX
+WORKDIR /home/external_tools/
+RUN wget https://pages.uoregon.edu/slouca/LoucaLab/archive/FAPROTAX/SECTION_Download/MODULE_Downloads/CLASS_Latest%20release/UNIT_FAPROTAX_1.2.4/FAPROTAX_1.2.4.zip &&\
+    unzip FAPROTAX_1.2.4.zip &&\
+    rm FAPROTAX_1.2.4.zip
+
+# Install Python dependencies for FAPROTAX script
+RUN pip install numpy &&\
+    pip install pytest-shutil &&\
+    pip install biom-format
+
+# Set a text editor as
+RUN apt-get install -y vim
+
+# Set paths to mount
+WORKDIR /mnt/
+RUN chmod 777 /mnt/ &&\
+    chmod g+s /mnt/
+
+# Copy scripts of microbetag 
+WORKDIR /home/scripts
+COPY /scripts/ ./
+RUN chmod -R +777 /home/scripts
+
+# Set /home workdir 
+WORKDIR /home
 
