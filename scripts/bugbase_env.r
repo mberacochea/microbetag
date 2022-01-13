@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-my_env <- "/mnt/external_tools/BugBase"
+my_env <- "/opt/external_tools/BugBase"
 
 
 package_list <- c("optparse", 
