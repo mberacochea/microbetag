@@ -1,4 +1,23 @@
-# Learn `neo4j`, `Cypher` and more
+# Visualization libraries and alternatives 
+
+## What about DASH Cytoscape? 
+
+
+
+
+### Dash Cytoscape as Docker app 
+
+
+We followed  a [`plotly` community thread](https://community.plotly.com/t/running-dash-app-in-docker-container/16067) to build a web app of our own. 
+
+An example of a Docker app is described [`here`](https://docs.docker.com/compose/gettingstarted/) at the Docker communication. 
+
+
+
+
+
+
+## Learn `neo4j`, `Cypher` and more
 
 ## Cypher Query Language
 
