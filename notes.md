@@ -14,6 +14,18 @@ An example of a Docker app is described [`here`](https://docs.docker.com/compose
 
 
 
+We need to consider and study about: 
+
+- [`Flask`](https://palletsprojects.com/p/flask/), a light Web Server Gateway Interface web application framework designed to make getting started quick and easy, with the ability to scale up to complex applications. 
+
+- [`redis`](https://www.fullstackpython.com/redis.html), an in-memory key-value pair database typically classified as a NoSQL database. Redis is commonly used for caching, transient data storage and as a holding area for data during analysis in Python applications.
+
+
+
+
+
+
+
 
 
 
