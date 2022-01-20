@@ -1,11 +1,35 @@
-# Visualization libraries and alternatives 
-
-## What about DASH Cytoscape? 
+# Sketching `microbetag`
 
 
+## `microbetag` scheme
+
+Input points:
+
+- OTU table & metadata table
+
+- Co-occurrence network & metadata table
+
+- Exception case: time series data
+
+Pipeline: 
+
+- FlashWeave 
 
 
-### Dash Cytoscape as Docker app 
+Output: 
+
+- 
+
+
+
+## Visualization libraries and alternatives 
+
+### What about DASH Cytoscape? 
+
+
+
+
+#### Dash Cytoscape as Docker app 
 
 
 We followed  a [`plotly` community thread](https://community.plotly.com/t/running-dash-app-in-docker-container/16067) to build a web app of our own. 
@@ -29,9 +53,9 @@ We need to consider and study about:
 
 
 
-## Learn `neo4j`, `Cypher` and more
+### Learn `neo4j`, `Cypher` and more
 
-## Cypher Query Language
+### Cypher Query Language
 
 
 Cypher is a graph query language that is used to query the Neo4j Database. 
@@ -72,7 +96,7 @@ WHERE p2.name = "Tom Hanks"
 For more about Cypher, you may have a look [here](https://neo4j.com/developer/cypher/).
 
 
-## AuraDB
+### AuraDB
 
 *What are the the AuraDB Free database limits?*
 
@@ -84,7 +108,7 @@ The database is free forever, no credit card required.
 It will **be automatically paused** if you do not use it for **72 hours**. But don't worry, you can resume the database at any time within 90 days.
 
 
-## neo4j 
+### neo4j 
 
 neo4J is a **native** graph database. 
 Each node contains direct pointers to all the nodes that it is connected to.
