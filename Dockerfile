@@ -147,6 +147,34 @@ RUN pip install pandas &&\
     pip install dash &&\
     pip install plotly
 
+
+# Install EnDED
+WORKDIR /home/external_tools
+# The boost library is dependency for that
+RUN apt-get install -y libboost-dev
+
+# Get and install EnDED
+RUN git clone https://github.com/InaMariaDeutschmann/EnDED.git &&\
+    cd EnDED &&\
+    make
+
+
+# Install FlashWeave
+# As it is written in Julia we need to get that too
+RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.1-linux-x86_64.tar.gz &&\
+    tar -zxvf julia-1.7.1-linux-x86_64.tar.gz &&\
+    echo "export PATH=$PATH:/home/external_tools/julia-1.7.1/bin" >> /root/.bashrc 
+# Get FlashWeave
+RUN /home/external_tools/julia-1.7.1/bin/julia -e 'using Pkg;Pkg.add("FlashWeave")'
+
+
+# Install cwl-runner
+RUN apt-get update &&\
+    apt-get install -y cwltool &&\
+    pip install cwltool
+
+
+
 #------------     SET THE DASH - CYTO - DOCKER SERVER  --------- #
 
 # Copy microbetag app 
@@ -163,5 +191,3 @@ ENV NAME world
 # Command to run 
 
 CMD ["python3", "app.py"]
-
-
