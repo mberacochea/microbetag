@@ -189,4 +189,5 @@ EXPOSE 8050
 ENV NAME world
 # Command to run 
 
-CMD ["python3", "app.py"]
+# CMD ["python3", "app.py"]
+CMD ["cwl-runner", "--debug", "test.cwl", "test-job.yml"]
