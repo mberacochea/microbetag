@@ -169,12 +169,11 @@ RUN /home/external_tools/julia-1.7.1/bin/julia -e 'using Pkg;Pkg.add("FlashWeave
 
 
 # Install cwl-runner
-RUN apt-get update &&\
-    apt-get install -y cwltool &&\
-    pip install cwltool
+RUN git clone https://github.com/common-workflow-language/cwltool.git &&\
+    cd cwltool &&\
+    pip install .[deps] 
 
-
-
+RUN pip install cwlref-runner
 #------------     SET THE DASH - CYTO - DOCKER SERVER  --------- #
 
 # Copy microbetag app 
