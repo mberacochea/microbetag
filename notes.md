@@ -1,9 +1,9 @@
-# Sketching `microbetag`
+# Sketching `microbetag` - building new skills!
 
 
 ## `microbetag` scheme
 
-Input points:
+**Input points:**
 
 - OTU table & metadata table
 
@@ -11,22 +11,42 @@ Input points:
 
 - Exception case: time series data
 
-Pipeline: 
+**Pipeline*: **
 
-- FlashWeave 
+- FlashWeave (if user does not have a co-occurrence network as input but an OTU table)
+
+- EnDED (optional; if yes run 1st)
+
+- BUGBASE \& FAPROTAX (for the phenotipic channel)
+
+- Pathway complementarity module 
+
+- EcoEFMSs
+
+\* I am thinking that as all these modules are actually different ways
+to approach our goal, we could ask the user to build his/her own pipeline 
+and not having a default one! 
+Having a default makes things easier sure, but maybe in this case it would be better
+to ask the user to *build* the pipeline. 
 
 
-Output: 
 
-- 
+**Output:** 
+
+- `.tsv` files with the annotations per edge 
+
+- a GUI with the annotated graph
+
+
+
+
+
 
 
 
 ## Visualization libraries and alternatives 
 
 ### What about DASH Cytoscape? 
-
-
 
 
 #### Dash Cytoscape as Docker app 
@@ -43,14 +63,6 @@ We need to consider and study about:
 - [`Flask`](https://palletsprojects.com/p/flask/), a light Web Server Gateway Interface web application framework designed to make getting started quick and easy, with the ability to scale up to complex applications. 
 
 - [`redis`](https://www.fullstackpython.com/redis.html), an in-memory key-value pair database typically classified as a NoSQL database. Redis is commonly used for caching, transient data storage and as a holding area for data during analysis in Python applications.
-
-
-
-
-
-
-
-
 
 
 ### Learn `neo4j`, `Cypher` and more
