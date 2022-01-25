@@ -137,16 +137,10 @@ WORKDIR /mnt/
 RUN chmod 777 /mnt/ &&\
     chmod g+s /mnt/
 
-# Copy scripts of microbetag 
-WORKDIR /home/scripts
-COPY /scripts/ ./
-RUN chmod -R +777 /home/scripts
-
 # Install pandas, dash, plotly 
 RUN pip install pandas &&\
     pip install dash &&\
     pip install plotly
-
 
 # Install EnDED
 WORKDIR /home/external_tools
@@ -157,7 +151,6 @@ RUN apt-get install -y libboost-dev
 RUN git clone https://github.com/InaMariaDeutschmann/EnDED.git &&\
     cd EnDED &&\
     make
-
 
 # Install FlashWeave
 # As it is written in Julia we need to get that too
@@ -190,4 +183,6 @@ ENV NAME world
 # Command to run 
 
 # CMD ["python3", "app.py"]
-CMD ["cwl-runner", "--debug", "test.cwl", "test-job.yml"]
+# CMD ["cwl-runner", "--debug", "test.cwl", "test-job.yml"]
+CMD ["cwl-runner", "--debug", "microbetag.cwl", "microbetag-job.yml"]
+
