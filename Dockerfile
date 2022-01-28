@@ -180,9 +180,17 @@ EXPOSE 8050
 
 # Set environmet
 ENV NAME world
-# Command to run 
 
+RUN pip install dash-cytoscape &&\
+    pip install dash-vtk &&\
+    pip install ipywidgets
+
+
+ENV WORKFLOW otu_table
+COPY test/ ./test/
 # CMD ["python3", "app.py"]
-# CMD ["cwl-runner", "--debug", "test.cwl", "test-job.yml"]
-CMD ["cwl-runner", "--debug", "microbetag.cwl", "microbetag-job.yml"]
-
+# # CMD ["cwl-runner", "--debug", "test.cwl", "test-job.yml"]
+# # CMD ["cwl-runner", "--debug", "microbetag.cwl", "microbetag-job.yml"]
+# CMD ["sh", "-c", "python3 test.py ${WORKFLOW}"]
+# CMD ["python3", "scripts/build_a_graph.py", "/mnt/network_output.edgelist"]
+CMD ["python3", "scripts/pass_networkx_to_dash.py"]
