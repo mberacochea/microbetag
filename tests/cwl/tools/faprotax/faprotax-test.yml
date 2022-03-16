@@ -4,7 +4,7 @@ $namespaces:
 
 input_table:
   class: File
-  path: /home/haris/Desktop/finalTablePart.tsv
+  path: finalTablePart.tsv
   format: edam:data_3707
 
 row_names_are_in_column: "Classification"  

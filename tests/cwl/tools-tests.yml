@@ -1,0 +1,123 @@
+- job: tools/faprotax/faprotax-test.yml
+  tool: ../../tools/faprotax/faprotax_v_1.2.4.cwl
+  short_name: faprotax_v_1.2.4.cwl
+  doc: "FAPROTAX"
+  output:
+    faprotax_output:
+      location: Any
+      basename: faprotax_output
+      class: Directory
+      listing:
+      - class: File
+        basename: nitrogen_respiration.txt
+        checksum: sha1$d919a11799cc45b2c3c93502ecdf2d50cb4522c0
+        size: 1829
+      - class: File
+        basename: human_pathogens_all.txt
+        checksum: sha1$50f8f5ec932c18aa9968248c9811aaab5f4827b6
+        size: 2366
+      - class: File
+        basename: photosynthetic_cyanobacteria.txt
+        checksum: sha1$395c9815460d3c653ff7e3b683d9b2b2d672d101
+        size: 1538
+      - class: File
+        basename: anoxygenic_photoautotrophy_S_oxidizing.txt
+        checksum: sha1$5c6a3141c30b2519629c9085b864803b1b0a7a87
+        size: 1254
+      - class: File
+        basename: methylotrophy.txt
+        checksum: sha1$e8f4b240dac3a14e1badc1c94141338f91f93215
+        size: 2648
+      - class: File
+        basename: photoautotrophy.txt
+        checksum: sha1$fd66ef40d961f9d8f66114f3efa241ba39363427
+        size: 1822
+      - class: File
+        basename: nitrate_respiration.txt
+        checksum: sha1$d919a11799cc45b2c3c93502ecdf2d50cb4522c0
+        size: 1829
+      - class: File
+        basename: anoxygenic_photoautotrophy.txt
+        checksum: sha1$5c6a3141c30b2519629c9085b864803b1b0a7a87
+        size: 1254
+      - class: File
+        basename: thiosulfate_respiration.txt
+        checksum: sha1$86f42779eb4d5ef46f84e1fdca09ee3c397d225e
+        size: 1260
+      - class: File
+        basename: respiration_of_sulfur_compounds.txt
+        checksum: sha1$f79bb07e8ff0c02d2837fbc371b2519e31c5d36e
+        size: 4410
+      - class: File
+        basename: funct_otu_table.tsv
+        checksum: sha1$7347ea2405ddecead1b7825c4bc56fc91543d5aa
+        size: 19654
+      - class: File
+        basename: sulfate_respiration.txt
+        checksum: sha1$f79bb07e8ff0c02d2837fbc371b2519e31c5d36e
+        size: 4410
+      - class: File
+        basename: aerobic_chemoheterotrophy.txt
+        checksum: sha1$11eb7b2c6b371c9140576ac771166bde09aa13ea
+        size: 17574
+      - class: File
+        basename: animal_parasites_or_symbionts.txt
+        checksum: sha1$fb17e40b6a2e5a030259202eb66e5cf471c80c6a
+        size: 2636
+      - class: File
+        basename: nonphotosynthetic_cyanobacteria.txt
+        checksum: sha1$6846dafd3cbc2571a32bfe726f2934928f6664ed
+        size: 1473
+      - class: File
+        basename: chemoheterotrophy.txt
+        checksum: sha1$30c951bc1777a9ba5783f44b697e32ea6cbbb590
+        size: 20369
+      - class: File
+        basename: aromatic_compound_degradation.txt
+        checksum: sha1$8277cacde0a6e6ecb44d544eec27a8c145e75589
+        size: 2107
+      - class: File
+        basename: phototrophy.txt
+        checksum: sha1$fd66ef40d961f9d8f66114f3efa241ba39363427
+        size: 1822
+      - class: File
+        basename: human_associated.txt
+        checksum: sha1$2751b9350acdfa5b1cdaba99bbba7ff49de83e4f
+        size: 2366
+      - class: File
+        basename: fermentation.txt
+        checksum: sha1$971e9053a399519d782ab3aaad91ee360feba0bf
+        size: 4827
+      - class: File
+        basename: predatory_or_exoparasitic.txt
+        checksum: sha1$e5fd3196e7bf93db2e7a6d75ea3365353061d795
+        size: 1259
+      - class: File
+        basename: methanol_oxidation.txt
+        checksum: sha1$085c06a93cee4bb3321a553d16c8af2edd421a4c
+        size: 2648
+      - class: File
+        basename: sulfite_respiration.txt
+        checksum: sha1$86f42779eb4d5ef46f84e1fdca09ee3c397d225e
+        size: 1260
+      - class: File
+        basename: chloroplasts.txt
+        checksum: sha1$507c8828e029a25050bf2c899df2e23de674ea4d
+        size: 2078
+      - class: File
+        basename: oxygenic_photoautotrophy.txt
+        checksum: sha1$395c9815460d3c653ff7e3b683d9b2b2d672d101
+        size: 1538
+      - class: File
+        basename: nitrate_reduction.txt
+        checksum: sha1$e1f0505191b3225fcd15200c5a4f13ad659f460a
+        size: 3763
+      - class: File
+        basename: intracellular_parasites.txt
+        checksum: sha1$afab3c63d29b915372188c9443f36b58d627a5e5
+        size: 6936
+    log_out:
+      basename: faprotax-tool.log
+      class: File
+      checksum: sha1$da39a3ee5e6b4b0d3255bfef95601890afd80709
+      size: 0
